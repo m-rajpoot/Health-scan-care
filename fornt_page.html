@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Scan Care Diagnostics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f5f5f5;
+        }
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            color: #D4A017; /* Darker gold for better visibility */
+        }
+        .header-bg {
+            background: #1A1A1A; /* Black background for header */
+        }
+        .nav-button {
+            transition: all 0.3s ease;
+            background-color: #D4A017; /* Darker gold for buttons */
+            color: #1A1A1A; /* Black text */
+        }
+        .nav-button:hover {
+            background-color: #c59014; /* Slightly darker shade for hover */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .gallery-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        section {
+            scroll-margin-top: 20px; /* Reduced since header is no longer sticky */
+        }
+        .hero-bg {
+            background: #1A1A1A; /* Black background for hero */
+        }
+        .highlight {
+            background-color: #D4A017; /* Darker gold for highlights */
+            color: #1A1A1A; /* Black text */
+        }
+        .footer-bg {
+            background: #1A1A1A; /* Black background for footer */
+        }
+        .faq-item {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .faq-item:hover {
+            background-color: #e0e0e0;
+        }
+        .faq-answer {
+            display: none;
+            padding-top: 0.5rem;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        .logo-placeholder {
+            width: 40px;
+            height: 40px;
+            background-color: #D4A017; /* Darker gold for logo placeholder */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1A1A1A;
+            font-weight: bold;
+        }
+        .notice-box {
+            background: linear-gradient(135deg, #D4A017 0%, #c59014 100%); /* Adjusted gradient with darker gold */
+            color: #1A1A1A;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .nav-button {
+                font-size: 0.75rem; /* Smaller font for mobile */
+                padding: 0.5rem 1rem;
+            }
+            header h1 {
+                font-size: 1.5rem; /* Smaller heading on mobile */
+            }
+            header p {
+                font-size: 0.875rem; /* Smaller paragraph text */
+            }
+            .header-info {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .header-info p {
+                margin-left: 0 !important;
+                margin-top: 0.5rem;
+            }
+            .map-container {
+                position: relative;
+                padding-bottom: 75%; /* 4:3 aspect ratio */
+                height: 0;
+                overflow: hidden;
+            }
+            .map-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            section {
+                padding: 2rem 1rem; /* Reduced padding for mobile */
+            }
+            h2 {
+                font-size: 1.5rem; /* Smaller section headings */
+            }
+            .contact-details {
+                flex-direction: column;
+                space-y-4;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-bg text-white py-4 shadow-lg">
+        <div class="container mx-auto px-4">
+            <!-- Navigation Buttons -->
+            <nav class="mb-4 flex flex-wrap justify-center gap-2">
+                <a href="#gallery" class="nav-button px-4 py-2 rounded-lg text-sm">Gallery</a>
+                <a href="#feedback" class="nav-button px-4 py-2 rounded-lg text-sm">Feedback</a>
+                <a href="#pricing" class="nav-button px-4 py-2 rounded-lg text-sm">Price Details</a>
+                <a href="#tests" class="nav-button px-4 py-2 rounded-lg text-sm">Popular Tests</a>
+                <a href="#contact" class="nav-button px-4 py-2 rounded-lg text-sm">Contact</a>
+                <a href="#location" class="nav-button px-4 py-2 rounded-lg text-sm">Location</a>
+                <a href="#faq" class="nav-button px-4 py-2 rounded-lg text-sm">FAQ</a>
+            </nav>
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <a href="/" class="logo-placeholder mr-4">Logo</a>
+                    <div class="text-center md:text-left">
+                        <h1 class="text-3xl md:text-4xl font-bold">Health Scan Care Diagnostics</h1>
+                        <p class="text-md md:text-lg mt-2">A Complete Diagnostic Solution</p>
+                        <p class="text-sm mt-1">Infront of Circus Ground, Fatehpur Bypass Road, Siwan</p>
+                    </div>
+                </div>
+                <div class="header-info flex flex-col md:flex-row items-center">
+                    <p class="text-md md:text-lg font-semibold">Pro.: Deepak Kr. Singh</p>
+                    <p class="text-md md:text-lg ml-0 md:ml-4">Mob.: 9504259153, 7370802404</p>
+                    <p class="text-sm mt-1 md:ml-4 highlight inline-block px-3 py-1 rounded-full">24/7 Hours Service</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-xl md:text-2xl font-bold mb-2">AN ISO 9001:2015 CERTIFIED</p>
+            <h2 class="text-2xl md:text-3xl font-semibold mb-4">Welcome to Health Scan Care Diagnostics</h2>
+            <p class="text-md md:text-lg mb-6">We provide comprehensive full-body checkups including blood tests, sugar tests, dengue, malaria, thyroid, and more. Free home collection available!</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <span class="highlight px-4 py-2 rounded-full text-sm md:text-base">Free Home Collection</span>
+                <span class="highlight px-4 py-2 rounded-full text-sm md:text-base">Blood Collection Center</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-semibold text-center mb-8">Gallery</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="gallery-item bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="https://via.placeholder.com/400x300?text=Lab+Equipment" alt="Lab Equipment" class="w-full h-48 object-cover">
+                    <p class="p-4 text-center">Modern Lab Equipment</p>
+                </div>
+                <div class="gallery-item bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="https://via.placeholder.com/400x300?text=Testing+Area" alt="Testing Area" class="w-full h-48 object-cover">
+                    <p class="p-4 text-center">Testing Area</p>
+                </div>
+                <div class="gallery-item bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="https://via.placeholder.com/400x300?text=Staff+Team" alt="Staff Team" class="w-full h-48 object-cover">
+                    <p class="p-4 text-center">Our Dedicated Staff</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section id="feedback" class="bg-gray-200 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-semibold text-center mb-8">Customer Feedback</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <p class="italic">"Excellent service with quick results. The free home collection was a lifesaver!"</p>
+                    <p class="mt-4 font-semibold text-right">- Priya Sharma</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <p class="italic">"Professional staff and accurate testing. Highly recommend Health Scan Care!"</p>
+                    <p class="mt-4 font-semibold text-right">- Rajesh Kumar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-semibold text-center mb-8">Pricing Details</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Existing Packages -->
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Basic Checkup</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹999</p>
+                    <p class="mt-2">Includes Blood Test, Sugar Test</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Advanced Checkup</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹1999</p>
+                    <p class="mt-2">Includes Dengue, Malaria, Thyroid</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Full Body Checkup</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹2999</p>
+                    <p class="mt-2">Comprehensive Test Package</p>
+                </div>
+                <!-- New Tests -->
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">TLC, DLC</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹200</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">HB</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹100</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">ESR</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹100</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">CBC</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹400</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Blood Sugar (Each Sample)</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹60</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Urea</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹250</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Creatinine</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹250</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">SGPT (ALT)</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹250</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">SGOT (AST)</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹250</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Total Protein (A:G Ratio)</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹400</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Calcium</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹400</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Sodium (Na+)</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹300</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Potassium (K+)</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹300</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">LFT (Liver Function Test)</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹700</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">KFT (Kidney Function Test)</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹700</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Bilirubin (Total & Direct)</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹250</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Alkaline Phosphatase (ALP)</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹250</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">S. Albumin</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹200</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">S. Protein</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹400</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Ionised Calcium (ICa)</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹600</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Chloride (CL-)</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹300</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Triglyceride</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹300</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">HDL</h3>
+                    <p class="text-xl md:text-2xl font-bold" style="color: #D4A017;">₹300</p>
+                </div>
+            </div>
+            <!-- Notice for Discounts -->
+            <div class="mt-8">
+                <div class="notice-box">
+                    <p class="text-lg md:text-xl">Feel free to ask for discounts – we’d love to help you! 💛</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Tests Section -->
+    <section id="tests" class="bg-gray-200 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-semibold text-center mb-8">Popular Tests</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
+                <div class="bg-white p-4 rounded-lg shadow-lg">CBC Test</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">Amylase Test</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">Bilirubin Test</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">Blood Glucose Fasting (FBS)</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">C-peptide Test</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">CRP Test</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">Dengue Test</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">Ferritin Test</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">Food Intolerance</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">HbA1C Test</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">Iron Studies Test</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">Liver Function Test</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">Renal Function Test</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">Covid-19 Test</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">Thyroid Test</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">Vitamin B12 Test</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">Vitamin D Test</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">Allergy Test</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">Urine Culture Test</div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">Testosterone Test</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gray-200 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-semibold text-center mb-8">Contact Us</h2>
+            <div class="contact-details flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-8">
+                <div class="text-center">
+                    <p class="font-semibold">Phone:</p>
+                    <p>9504259153, 7370802404</p>
+                </div>
+                <div class="text-center">
+                    <p class="font-semibold">Email:</p>
+                    <p>info@healthscancare.com</p>
+                </div>
+                <div class="text-center">
+                    <p class="font-semibold">Operating Hours:</p>
+                    <p>24/7 Service</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-semibold text-center mb-8">Our Location</h2>
+            <p class="text-center mb-6">Infront of Circus Ground, Fatehpur Bypass Road, Siwan</p>
+            <div class="flex justify-center">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.944239239247!2d84.3599980150625!3d26.21962298341927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDEzJzEwLjYiTiA4NMKwMjEnMzYuMCJF!5e0!3m2!1sen!2sin!4v1634567890123" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="bg-gray-200 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-semibold text-center mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <div class="faq-item bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-lg font-semibold mb-2">How do I directly get connected with customer connect?</h3>
+                    <p class="faq-answer">You can reach out to us via phone at 9504259153 or 7370802404, or email us at info@healthscancare.com. We're available 24/7 to assist you!</p>
+                </div>
+                <div class="faq-item bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-lg font-semibold mb-2">What all services do we offer?</h3>
+                    <p class="faq-answer">We offer a wide range of diagnostic services including full-body checkups, blood tests, sugar tests, dengue, malaria, thyroid tests, and more. We also provide free home collection services.</p>
+                </div>
+                <div class="faq-item bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-lg font-semibold mb-2">When will I get my report? And how will I come to know that my report is ready?</h3>
+                    <p class="faq-answer">Reports are typically available within 24-48 hours after sample collection. You will be notified via SMS or email once your report is ready, and you can also check the status by contacting us.</p>
+                </div>
+                <div class="faq-item bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-lg font-semibold mb-2">Will I also get a hardcopy of my report?</h3>
+                    <p class="faq-answer">Yes, you can request a hardcopy of your report at our center. Alternatively, we can dispatch it to your address for an additional fee.</p>
+                </div>
+                <div class="faq-item bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-lg font-semibold mb-2">Will there be additional charges to get report dispatched at my registered address?</h3>
+                    <p class="faq-answer">Yes, there may be a small additional charge for dispatching the report to your address. Please contact us for the exact fee based on your location.</p>
+                </div>
+                <div class="faq-item bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-lg font-semibold mb-2">What are the different payment options?</h3>
+                    <p class="faq-answer">We accept various payment methods including cash, credit/debit cards, UPI, and online bank transfers. You can choose the most convenient option at the time of booking.</p>
+                </div>
+                <div class="faq-item bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-lg font-semibold mb-2">Are there home collection charges separately for each member?</h3>
+                    <p class="faq-answer">No, home collection charges are typically per visit, not per member. However, this may vary based on the number of tests and distance. Please confirm with us during booking.</p>
+                </div>
+                <div class="faq-item bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-lg font-semibold mb-2">Do I require to remain fasting?</h3>
+                    <p class="faq-answer">Fasting requirements depend on the test. For example, Blood Glucose Fasting (FBS) requires fasting for 8-12 hours. We will inform you of any specific requirements when you book your test.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer-bg text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2025 Health Scan Care Diagnostics. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for FAQ Toggle -->
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
