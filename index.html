@@ -125,9 +125,11 @@
                 font-size: 1.5rem; /* Smaller section headings */
             }
             .contact-details {
-                flex-direction: column;
-                space-y-4;
-            }
+            display: flex;
+            flex-direction: column;
+            gap: 1rem; /* or whatever spacing you want */
+}
+
         }
     </style>
 </head>
@@ -166,7 +168,7 @@
     <!-- Hero Section -->
     <section class="hero-bg text-white py-12">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-xl md:text-2xl font-bold mb-2">AN ISO 9001:2015 CERTIFIED</p>
+            <p class="text-xl md:text-2xl font-bold mb-2">AN ISO 9001:2015 CERTIFIED LAB</p>
             <h2 class="text-2xl md:text-3xl font-semibold mb-4">Welcome to Health Scan Care Diagnostics</h2>
             <p class="text-md md:text-lg mb-6">We provide comprehensive full-body checkups including blood tests, sugar tests, dengue, malaria, thyroid, and more. Free home collection available!</p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
